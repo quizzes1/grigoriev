@@ -1,9 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <SDL2/SDL.h>
-
-
 typedef enum bool {false, true} bool;
 
 typedef struct point {
@@ -11,3 +5,10 @@ typedef struct point {
     int coordinates_y;
 } point;
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
+#include "system_initialize.h"
+#include "buttons.h"

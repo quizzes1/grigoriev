@@ -1,13 +1,11 @@
 #include "headers/allheaders.h"
-#include "headers/buttons.h"
-#include <SDL2/SDL.h>
-#include "headers/system_initialize.h"
 
 int WIDTH = 1280, HEIGHT = 720;
 
 int main(int argc, char *argv[]){
-
-
+    Menu_qualities menu = system_init();
+    WIDTH = menu.window.width;
+    HEIGHT = menu.window.height;
     SDL_Init( SDL_INIT_EVERYTHING );
 
     SDL_Window *window = SDL_CreateWindow("Menu", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
@@ -22,12 +20,12 @@ int main(int argc, char *argv[]){
         return 1;
     }
 
-    SDL_SetRenderDrawColor(renderer, 65, 105, 225, SDL_ALPHA_OPAQUE);
+    SDL_SetRenderDrawColor(renderer, menu.window.color.r, menu.window.color.g, menu.window.color.b, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(renderer);
     SDL_RenderPresent(renderer);
 
-    button start_button = initialize_start_button(WIDTH, renderer);
-    button exit_button = initialize_exit_button(WIDTH, renderer);
+    button start_button = initialize_button(WIDTH, menu.button1.height, menu.button1.width, menu.button1.name, menu.button1.color, menu.button1.highlight_colour, renderer);
+    button exit_button = initialize_button(WIDTH, menu.button2.height, menu.button2.width, menu.button2.name, menu.button2.color, menu.button2.highlight_colour, renderer);
     SDL_Event windowEvent;
 
     while (1) {
@@ -35,8 +33,8 @@ int main(int argc, char *argv[]){
         mouse_point.h = 1;
         mouse_point.w = 1;
         SDL_GetMouseState(&mouse_point.x, &mouse_point.y);
-        start_button = update_button(start_button, mouse_point);
-        exit_button = update_button(exit_button, mouse_point);
+        start_button = update_button(renderer, start_button, mouse_point);
+        exit_button = update_button(renderer, exit_button, mouse_point);
         draw_button(start_button, renderer);
         draw_button(exit_button, renderer);
         if ( SDL_PollEvent ( &windowEvent ) ){

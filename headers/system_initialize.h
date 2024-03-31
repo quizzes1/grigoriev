@@ -41,7 +41,7 @@ typedef struct window_qualities{
 
 } window_qualities;
 
-typedef struct menu{
+typedef struct Menu_qualities{
     window_qualities window;
     button_qualities button1;
     button_qualities button2;
