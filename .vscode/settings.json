@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "allheaders.h": "c",
+        "sdl.h": "c",
+        "buttons.h": "c",
+        "stdio.h": "c"
+    }
+}

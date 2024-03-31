@@ -1,0 +1,25 @@
+MenuBegin
+
+WindowBegin
+Width=100
+Height=100
+Color= 1 1 1
+WindowEnd
+
+Button1Begin
+Width=200
+Height=200
+Color=2 2 2
+HiglightColor=2 2 2
+Name=200
+Button1End
+
+Button2Begin
+Width=300
+Height=300
+Color=3 3 3
+HiglightColor= 3 3 3
+Name=300
+Button2End
+
+MenuEnd
