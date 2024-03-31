@@ -8,6 +8,15 @@ window_qualities window;
 button_qualities button1;
 button_qualities button2;
 
+void assigning_position(char *str){
+    if(parse_part_selected == 2){
+        sscanf(str, "%d %d", &button1.position.coordinates_x, &button1.position.coordinates_y);
+    }
+    else{
+        sscanf(str, "%d %d", &button2.position.coordinates_x, &button2.position.coordinates_y);
+    }
+}
+
 void assigning_name(char *str){
     
     if(parse_part_selected == 2){
@@ -99,6 +108,9 @@ TokenType get_token_type(char *token) {
     else if(strcmp(token, "Name") == 0){
         return Name;
     }
+    else if(strcmp(token, "Position") == 0){
+        return Position;
+    }
 }
 
 void parse_line(char *line) {
@@ -150,6 +162,9 @@ void parse_line(char *line) {
                 break;
             case Height:
                 assigning_size(token.value, 2);
+                break;
+            case Position:
+                assigning_position(token.value);
                 break;
         }
 

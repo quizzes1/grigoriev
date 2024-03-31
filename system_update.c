@@ -24,8 +24,8 @@ int main(int argc, char *argv[]){
     SDL_RenderClear(renderer);
     SDL_RenderPresent(renderer);
 
-    button start_button = initialize_button(WIDTH, menu.button1.height, menu.button1.width, menu.button1.name, menu.button1.color, menu.button1.highlight_colour, renderer);
-    button exit_button = initialize_button(WIDTH, menu.button2.height, menu.button2.width, menu.button2.name, menu.button2.color, menu.button2.highlight_colour, renderer);
+    button start_button = initialize_button(WIDTH, menu.button1.height, menu.button1.width, menu.button1.name, menu.button1.color, menu.button1.highlight_colour, menu.button1.position, renderer);
+    button exit_button = initialize_button(WIDTH, menu.button2.height, menu.button2.width, menu.button2.name, menu.button2.color, menu.button2.highlight_colour, menu.button2.position, renderer);
     SDL_Event windowEvent;
 
     while (1) {

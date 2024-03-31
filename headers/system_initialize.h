@@ -11,7 +11,8 @@ typedef enum TokenType {
     Width,
     Height,
     Color,
-    Name
+    Name,
+    Position
 } TokenType;
 
 typedef struct Token {
@@ -29,6 +30,7 @@ typedef struct button_qualities{
     int height;
     int width;
     char name[100];
+    point position;
     rgb_colour color;
     rgb_colour highlight_colour;
 

@@ -1,14 +1,14 @@
 #include "headers/allheaders.h"
 
 
-button initialize_button(int window_width, int height, int width, char *name, rgb_colour color, rgb_colour highlight_color,  SDL_Renderer * renderer){
+button initialize_button(int window_width, int height, int width, char *name, rgb_colour color, rgb_colour highlight_color, point position,  SDL_Renderer * renderer){
     button initializing_button;
 
     TTF_Init();
     initializing_button.font = TTF_OpenFont("font.ttf", 100);
 
-    SDL_Color col = {color.r, color.g, color.b, 0};
-    SDL_Color highlight_colour = {highlight_color.r, highlight_color.g, highlight_color.b, 0};
+    SDL_Color col = {color.r, color.g, color.b, 255};
+    SDL_Color highlight_colour = {highlight_color.r, highlight_color.g, highlight_color.b, 255};
     initializing_button.main_col = col;
     initializing_button.highlight_col = highlight_colour;
 
@@ -25,8 +25,8 @@ button initialize_button(int window_width, int height, int width, char *name, rg
     initializing_button.drect.h = height;
     initializing_button.drect.w = width;
 
-    initializing_button.drect.x = window_width/2 - initializing_button.drect.w/2;
-    initializing_button.drect.y = 200;
+    initializing_button.drect.x = position.coordinates_x;
+    initializing_button.drect.y = position.coordinates_y;
     
     initializing_button.is_selected = false;
 
