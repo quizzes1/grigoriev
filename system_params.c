@@ -34,6 +34,9 @@ void assigning_size(char *str, int flag){
             sscanf(str, "%d", &button_assigning.height);
         }
     }
+    else if(flag == 3){
+        sscanf(str, "%d", &button_assigning.size);
+    }
 }
 
 void assigning_color(char *str, int flag){
@@ -80,6 +83,9 @@ TokenType get_token_type(char *token) {
     }
     else if(strcmp(token, "Position") == 0){
         return Position;
+    }
+    else if(strcmp(token, "Size") == 0){
+        return Size;
     }
 }
 
@@ -133,9 +139,13 @@ void parse_line(char *line) {
             case Height:
                 assigning_size(token.value, 2);
                 break;
+            case Size:
+                assigning_size(token.value, 3);
+                break;
             case Position:
                 assigning_position(token.value);
                 break;
+            
         }
 
         token_str = strtok(NULL, "=\n");
@@ -166,8 +176,8 @@ Menu_qualities system_init() {
         parse_line(line);
     }
     //printf("%d %d, %d %d %d", menu.window.width, menu.window.height, menu.window.color.r, menu.window.color.g, menu.window.color.b);
-    // printf("%d %d, %d %d %d, %d %d %d, %s, %d %d", menu.button_assigning.width, menu.button_assigning.height, menu.button_assigning.color.r, menu.button_assigning.color.g, menu.button_assigning.color.b, menu.button_assigning.highlight_colour.r, menu.button_assigning.highlight_colour.g, menu.button_assigning.highlight_colour.b, menu.button_assigning.name, menu.button_assigning.position.coordinates_x, menu.button_assigning.position.coordinates_y);
-    // printf("\n%d %d, %d %d %d, %d %d %d, %s, %d %d", menu.button_assigning.width, menu.button_assigning.height, menu.button_assigning.color.r, menu.button_assigning.color.g, menu.button_assigning.color.b, menu.button_assigning.highlight_colour.r, menu.button_assigning.highlight_colour.g, menu.button_assigning.highlight_colour.b, menu.button_assigning.name, menu.button_assigning.position.coordinates_x, menu.button_assigning.position.coordinates_y);
+    //printf("%d %d, %d %d %d, %d %d %d, %s, %d %d", menu.button_assigning.width, menu.button_assigning.height, menu.button_assigning.color.r, menu.button_assigning.color.g, menu.button_assigning.color.b, menu.button_assigning.highlight_colour.r, menu.button_assigning.highlight_colour.g, menu.button_assigning.highlight_colour.b, menu.button_assigning.name, menu.button_assigning.position.coordinates_x, menu.button_assigning.position.coordinates_y);
+    //printf("\n%d %d, %d %d %d, %d %d %d, %s, %d %d", menu.button_assigning.width, menu.button_assigning.height, menu.button_assigning.color.r, menu.button_assigning.color.g, menu.button_assigning.color.b, menu.button_assigning.highlight_colour.r, menu.button_assigning.highlight_colour.g, menu.button_assigning.highlight_colour.b, menu.button_assigning.name, menu.button_assigning.position.coordinates_x, menu.button_assigning.position.coordinates_y);
     
     fclose(file);
     return menu;

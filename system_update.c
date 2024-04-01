@@ -29,10 +29,10 @@ int main(int argc, char *argv[]){
         button buttons_to_draw[menu.buttons_counter+1];
 
         for(int j = 0; j < menu.buttons_counter; j++){
-           buttons_to_draw[j] = initialize_button(WIDTH, menu.buttons[j].height, menu.buttons[j].width, menu.buttons[j].name, menu.buttons[j].color, menu.buttons[j].highlight_colour, menu.buttons[j].position, renderer);
+           buttons_to_draw[j] = initialize_button(WIDTH, menu.buttons[j].height, menu.buttons[j].width, menu.buttons[j].name, menu.buttons[j].color, menu.buttons[j].highlight_colour, menu.buttons[j].position, menu.buttons[j].size, renderer);
         }
         SDL_Event windowEvent;
-        
+
         while (1) {
             SDL_Rect mouse_point;
             mouse_point.h = 1;

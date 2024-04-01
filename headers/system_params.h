@@ -28,6 +28,7 @@ typedef struct rgb_colour{
 typedef struct button_qualities{
     int height;
     int width;
+    int size;
     char name[100];
     point position;
     rgb_colour color;
@@ -50,6 +51,7 @@ typedef struct Menu_qualities{
 } Menu_qualities;
 
 void assigning_name(char *str);
+void assigning_position(char *str);
 void assigning_size(char *str, int flag);
 void assigning_color(char *str, int flag);
 TokenType get_token_type(char *token);

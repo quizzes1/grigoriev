@@ -1,11 +1,11 @@
 #include "headers/allheaders.h"
 
 
-button initialize_button(int window_width, int height, int width, char *name, rgb_colour color, rgb_colour highlight_color, point position,  SDL_Renderer * renderer){
+button initialize_button(int window_width, int height, int width, char *name, rgb_colour color, rgb_colour highlight_color, point position, int size, SDL_Renderer * renderer){
     button initializing_button;
 
     TTF_Init();
-    initializing_button.font = TTF_OpenFont("font.ttf", 100);
+    initializing_button.font = TTF_OpenFont("font.ttf", size);
 
     SDL_Color col = {color.r, color.g, color.b, 255};
     SDL_Color highlight_colour = {highlight_color.r, highlight_color.g, highlight_color.b, 255};

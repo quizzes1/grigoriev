@@ -6,24 +6,30 @@ Height=720
 Color=65 105 225
 WindowEnd
 
+WindowBegin
+Width=1920
+Height=1080
+Color=65 105 225
+WindowEnd
+
 ButtonBegin
 Width=200
-Height=200
+Height=100
 Color=255 255 255
-HighlightColor=150 150 150
-Name=pizdosiynahoy
-Position=1000 550
-Size=600
+HighlightColor=255 0 0
+Name=start
+Position=640 360
+Size=100
 ButtonEnd
 
 ButtonBegin
-Width=300
-Height=300
+Width=200
+Height=100
 Color=255 255 255
 HighlightColor=255 0 0
-Name=pizdnahoy
-Position=1200 550
-Size=600
+Name=exit
+Position=640 460
+Size=100
 ButtonEnd
 
 MenuEnd
