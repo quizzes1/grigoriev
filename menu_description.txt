@@ -1,15 +1,17 @@
 MenuBegin
 
 WindowBegin
-Width=1280
-Height=720
-Color=65 105 225
+Width=50
+Height=50
+Color=148 0 211
+Position=100 105
 WindowEnd
 
 WindowBegin
-Width=1920
-Height=1080
-Color=65 105 225
+Width=50
+Height=50
+Color=0 255 0
+Position =300 205
 WindowEnd
 
 ButtonBegin
@@ -17,7 +19,17 @@ Width=200
 Height=100
 Color=255 255 255
 HighlightColor=255 0 0
-Name=start
+Name=draw
+Position=640 260
+Size=100
+ButtonEnd
+
+ButtonBegin
+Width=200
+Height=100
+Color=255 255 255
+HighlightColor=255 0 0
+Name=back
 Position=640 360
 Size=100
 ButtonEnd
@@ -27,7 +39,7 @@ Width=200
 Height=100
 Color=255 255 255
 HighlightColor=255 0 0
-Name=exit
+Name=exIt
 Position=640 460
 Size=100
 ButtonEnd

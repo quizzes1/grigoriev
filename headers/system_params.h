@@ -39,6 +39,7 @@ typedef struct button_qualities{
 typedef struct window_qualities{
     int height;
     int width;
+    point position;
     rgb_colour color;
 
 } window_qualities;
