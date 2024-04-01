@@ -33,9 +33,6 @@ int main(int argc, char *argv[]){
         windows_to_draw[i] = initialize_window(menu.windows[i].width, menu.windows[i].height, menu.windows[i].position.coordinates_x, menu.windows[i].position.coordinates_y, menu.windows[i].color.r, menu.windows[i].color.g, menu.windows[i].color.b, renderer);
     }
 
-    for(int i = 0; i < menu.windows_counter; i++){
-        printf("%d %d\n", windows_to_draw[i].window.x, windows_to_draw[i].window.y);
-    }
 
     SDL_Event windowEvent;
     int windows_drawn = 0;

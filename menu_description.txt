@@ -1,17 +1,17 @@
 MenuBegin
 
 WindowBegin
-Width=50
+Width=100
 Height=50
 Color=148 0 211
 Position=100 105
 WindowEnd
 
 WindowBegin
-Width=50
+Width=100
 Height=50
 Color=0 255 0
-Position =300 205
+Position=300 205
 WindowEnd
 
 ButtonBegin
