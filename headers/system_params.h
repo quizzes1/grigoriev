@@ -3,10 +3,8 @@ typedef enum TokenType {
     MenuEnd,
     WindowBegin,
     WindowEnd,
-    Button1Begin,
-    Button1End,
-    Button2Begin,
-    Button2End,
+    ButtonBegin,
+    ButtonEnd,
     HiglightColor,
     Width,
     Height,
@@ -45,9 +43,10 @@ typedef struct window_qualities{
 } window_qualities;
 
 typedef struct Menu_qualities{
-    window_qualities window;
-    button_qualities button1;
-    button_qualities button2;
+    int windows_counter;
+    int buttons_counter;
+    window_qualities* windows;
+    button_qualities* buttons;
 } Menu_qualities;
 
 void assigning_name(char *str);
@@ -56,3 +55,5 @@ void assigning_color(char *str, int flag);
 TokenType get_token_type(char *token);
 void parse_line(char *line);
 Menu_qualities system_init();
+void system_open();
+void system_close();

@@ -6,6 +6,7 @@
         "stdio.h": "c",
         "sdl_ttf.h": "c",
         "system_initialize.h": "c",
-        "cstdlib": "c"
+        "cstdlib": "c",
+        "stdlib.h": "c"
     }
 }

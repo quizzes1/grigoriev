@@ -6,7 +6,7 @@ Height=720
 Color=65 105 225
 WindowEnd
 
-Button1Begin
+ButtonBegin
 Width=200
 Height=200
 Color=255 255 255
@@ -14,9 +14,9 @@ HighlightColor=150 150 150
 Name=pizdosiynahoy
 Position=1000 550
 Size=600
-Button1End
+ButtonEnd
 
-Button2Begin
+ButtonBegin
 Width=300
 Height=300
 Color=255 255 255
@@ -24,6 +24,6 @@ HighlightColor=255 0 0
 Name=pizdnahoy
 Position=1200 550
 Size=600
-Button2End
+ButtonEnd
 
 MenuEnd

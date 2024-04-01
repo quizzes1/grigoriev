@@ -10,5 +10,5 @@ typedef struct point {
 #include <string.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
-#include "system_initialize.h"
+#include "system_params.h"
 #include "buttons.h"

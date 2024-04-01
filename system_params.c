@@ -2,52 +2,36 @@
 
 #define MAX_LINE_LENGTH 100
 
-int parse_part_selected = 0; //window, button1, button2
+int parse_part_selected = 0; //window, button_assigning, button_assigning
 //menu counter, window counter, button counter
-window_qualities window;
-button_qualities button1;
-button_qualities button2;
+Menu_qualities menu;
+window_qualities window_assigning;
+button_qualities button_assigning;
+
 
 void assigning_position(char *str){
-    if(parse_part_selected == 2){
-        sscanf(str, "%d %d", &button1.position.coordinates_x, &button1.position.coordinates_y);
-    }
-    else{
-        sscanf(str, "%d %d", &button2.position.coordinates_x, &button2.position.coordinates_y);
-    }
+    sscanf(str, "%d %d", &button_assigning.position.coordinates_x, &button_assigning.position.coordinates_y);
 }
 
 void assigning_name(char *str){
-    
-    if(parse_part_selected == 2){
-        sscanf(str, "%s", &button1.name);
-    }
-    else{
-        sscanf(str, "%s", &button2.name);
-    }
+    sscanf(str, "%s", &button_assigning.name);
 }
 
 void assigning_size(char *str, int flag){
     if(flag == 1){
         if(parse_part_selected == 1){
-            sscanf(str, "%d", &window.width);
+            sscanf(str, "%d", &window_assigning.width);
         }
         else if(parse_part_selected == 2){
-            sscanf(str, "%d", &button1.width);
-        }
-        else if(parse_part_selected == 3){
-            sscanf(str, "%d", &button2.width);
+            sscanf(str, "%d", &button_assigning.width);
         }
     }
     else if(flag == 2){
         if(parse_part_selected == 1){
-            sscanf(str, "%d", &window.height);
+            sscanf(str, "%d", &window_assigning.height);
         }
         else if(parse_part_selected == 2){
-            sscanf(str, "%d", &button1.height);
-        }
-        else if(parse_part_selected == 3){
-            sscanf(str, "%d", &button2.height);
+            sscanf(str, "%d", &button_assigning.height);
         }
     }
 }
@@ -55,22 +39,14 @@ void assigning_size(char *str, int flag){
 void assigning_color(char *str, int flag){
     if(flag == 1){
         if(parse_part_selected == 1){
-            sscanf(str, "%d %d %d", &window.color.r, &window.color.g, &window.color.b);
+            sscanf(str, "%d %d %d", &window_assigning.color.r, &window_assigning.color.g, &window_assigning.color.b);
         }
         else if (parse_part_selected == 2){
-            sscanf(str, "%d %d %d", &button1.color.r, &button1.color.g, &button1.color.b);
-        }
-        else if (parse_part_selected == 3){
-            sscanf(str, "%d %d %d", &button2.color.r, &button2.color.g, &button2.color.b);
+            sscanf(str, "%d %d %d", &button_assigning.color.r, &button_assigning.color.g, &button_assigning.color.b);
         }
     }
     if(flag == 2){
-        if (parse_part_selected == 2){
-            sscanf(str, "%d %d %d", &button1.highlight_colour.r, &button1.highlight_colour.g, &button1.highlight_colour.b);
-        }
-        else if (parse_part_selected == 3){
-            sscanf(str, "%d %d %d", &button2.highlight_colour.r, &button2.highlight_colour.g, &button2.highlight_colour.b);
-        }
+        sscanf(str, "%d %d %d", &button_assigning.highlight_colour.r, &button_assigning.highlight_colour.g, &button_assigning.highlight_colour.b);
     }
 }
 
@@ -81,17 +57,11 @@ TokenType get_token_type(char *token) {
     else if(strcmp(token, "WindowEnd") == 0){
         return WindowEnd;
     }
-    else if(strcmp(token, "Button1Begin") == 0){
-        return Button1Begin;
+    else if(strcmp(token, "ButtonBegin") == 0){
+        return ButtonBegin;
     }
-    else if(strcmp(token, "Button1End") == 0){
-        return Button1End;
-    }
-    else if(strcmp(token, "Button2Begin") == 0){
-        return Button2Begin;
-    }
-    else if(strcmp(token, "Button2End") == 0){
-        return Button2End;
+    else if(strcmp(token, "ButtonEnd") == 0){
+        return ButtonEnd;
     }
     else if(strcmp(token, "HighlightColor") == 0){
         return HiglightColor;
@@ -131,21 +101,21 @@ void parse_line(char *line) {
             case MenuEnd:
                 break;
             case WindowBegin:
+                menu.windows_counter++;
                 parse_part_selected = 1;
                 break;
             case WindowEnd:
+                menu.windows = (window_qualities*)realloc(menu.windows, sizeof(window_qualities) * menu.windows_counter);
+                menu.windows[menu.windows_counter - 1] = window_assigning;
                 parse_part_selected = 0;
                 break;
-            case Button1Begin:
+            case ButtonBegin:
+                menu.buttons_counter++;
                 parse_part_selected = 2;
                 break;
-            case Button1End:
-                parse_part_selected = 0;
-                break;
-            case Button2Begin:
-                parse_part_selected = 3;
-                break;
-            case Button2End:
+            case ButtonEnd:
+                menu.buttons = (button_qualities*)realloc(menu.buttons, sizeof(button_qualities) * menu.buttons_counter);
+                menu.buttons[menu.buttons_counter - 1] = button_assigning;
                 parse_part_selected = 0;
                 break;
             case Color:
@@ -172,9 +142,20 @@ void parse_line(char *line) {
     }
 }
 
+void system_open() {
+    menu.buttons = (button_qualities*)malloc(sizeof(button_qualities));
+    menu.windows = (window_qualities*)malloc(sizeof(window_qualities));
+    menu.buttons_counter = 0;
+    menu.windows_counter = 0;
+}
+
+void system_close() {
+    free(menu.buttons);
+    free(menu.windows);
+}
+
 Menu_qualities system_init() {
     FILE *file = fopen("menu_description.txt", "r");
-    Menu_qualities menu;
     if (file == NULL) {
         fprintf(stderr, "Failed to open file.\n");
         exit(1);
@@ -184,12 +165,9 @@ Menu_qualities system_init() {
     while (fgets(line, sizeof(line), file) != NULL) {
         parse_line(line);
     }
-    menu.button1 = button1;
-    menu.window = window;
-    menu.button2 = button2;
     //printf("%d %d, %d %d %d", menu.window.width, menu.window.height, menu.window.color.r, menu.window.color.g, menu.window.color.b);
-    // printf("%d %d, %d %d %d, %d %d %d, %s, %d %d", menu.button1.width, menu.button1.height, menu.button1.color.r, menu.button1.color.g, menu.button1.color.b, menu.button1.highlight_colour.r, menu.button1.highlight_colour.g, menu.button1.highlight_colour.b, menu.button1.name, menu.button1.position.coordinates_x, menu.button1.position.coordinates_y);
-    // printf("\n%d %d, %d %d %d, %d %d %d, %s, %d %d", menu.button2.width, menu.button2.height, menu.button2.color.r, menu.button2.color.g, menu.button2.color.b, menu.button2.highlight_colour.r, menu.button2.highlight_colour.g, menu.button2.highlight_colour.b, menu.button2.name, menu.button2.position.coordinates_x, menu.button2.position.coordinates_y);
+    // printf("%d %d, %d %d %d, %d %d %d, %s, %d %d", menu.button_assigning.width, menu.button_assigning.height, menu.button_assigning.color.r, menu.button_assigning.color.g, menu.button_assigning.color.b, menu.button_assigning.highlight_colour.r, menu.button_assigning.highlight_colour.g, menu.button_assigning.highlight_colour.b, menu.button_assigning.name, menu.button_assigning.position.coordinates_x, menu.button_assigning.position.coordinates_y);
+    // printf("\n%d %d, %d %d %d, %d %d %d, %s, %d %d", menu.button_assigning.width, menu.button_assigning.height, menu.button_assigning.color.r, menu.button_assigning.color.g, menu.button_assigning.color.b, menu.button_assigning.highlight_colour.r, menu.button_assigning.highlight_colour.g, menu.button_assigning.highlight_colour.b, menu.button_assigning.name, menu.button_assigning.position.coordinates_x, menu.button_assigning.position.coordinates_y);
     
     fclose(file);
     return menu;
