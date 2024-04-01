@@ -10,4 +10,4 @@ typedef struct button{
 
 button initialize_button(int window_width, int height, int width, char *name, rgb_colour color, rgb_colour highlight_color, point position,  SDL_Renderer * renderer);
 button update_button(SDL_Renderer * renderer, button current_button, SDL_Rect mouse_point);
-void draw_button(button current_button, SDL_Renderer* renderer);
+void draw_button(button current_button, SDL_Renderer* renderer); 

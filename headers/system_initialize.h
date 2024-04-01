@@ -12,7 +12,8 @@ typedef enum TokenType {
     Height,
     Color,
     Name,
-    Position
+    Position,
+    Size
 } TokenType;
 
 typedef struct Token {

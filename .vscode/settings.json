@@ -5,6 +5,7 @@
         "buttons.h": "c",
         "stdio.h": "c",
         "sdl_ttf.h": "c",
-        "system_initialize.h": "c"
+        "system_initialize.h": "c",
+        "cstdlib": "c"
     }
 }

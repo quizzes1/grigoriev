@@ -3,7 +3,7 @@
 #define MAX_LINE_LENGTH 100
 
 int parse_part_selected = 0; //window, button1, button2
-
+//menu counter, window counter, button counter
 window_qualities window;
 button_qualities button1;
 button_qualities button2;
@@ -120,7 +120,7 @@ void parse_line(char *line) {
         token.type = get_token_type(token_str);
         strcpy(token.value, "");
 
-        token_str = strtok(NULL, "=");
+        token_str = strtok(NULL, "=\n");
 
         if (token_str != NULL) {
             strcpy(token.value, token_str);
@@ -168,7 +168,7 @@ void parse_line(char *line) {
                 break;
         }
 
-        token_str = strtok(NULL, "=");
+        token_str = strtok(NULL, "=\n");
     }
 }
 
@@ -187,6 +187,11 @@ Menu_qualities system_init() {
     menu.button1 = button1;
     menu.window = window;
     menu.button2 = button2;
+    //printf("%d %d, %d %d %d", menu.window.width, menu.window.height, menu.window.color.r, menu.window.color.g, menu.window.color.b);
+    // printf("%d %d, %d %d %d, %d %d %d, %s, %d %d", menu.button1.width, menu.button1.height, menu.button1.color.r, menu.button1.color.g, menu.button1.color.b, menu.button1.highlight_colour.r, menu.button1.highlight_colour.g, menu.button1.highlight_colour.b, menu.button1.name, menu.button1.position.coordinates_x, menu.button1.position.coordinates_y);
+    // printf("\n%d %d, %d %d %d, %d %d %d, %s, %d %d", menu.button2.width, menu.button2.height, menu.button2.color.r, menu.button2.color.g, menu.button2.color.b, menu.button2.highlight_colour.r, menu.button2.highlight_colour.g, menu.button2.highlight_colour.b, menu.button2.name, menu.button2.position.coordinates_x, menu.button2.position.coordinates_y);
+    
     fclose(file);
     return menu;
+
 }

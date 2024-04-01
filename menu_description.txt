@@ -10,18 +10,20 @@ Button1Begin
 Width=200
 Height=200
 Color=255 255 255
-HiglightColor=150 150 150
-Name=pizdosiy
-position=0 550
+HighlightColor=150 150 150
+Name=pizdosiynahoy
+Position=1000 550
+Size=600
 Button1End
 
 Button2Begin
 Width=300
 Height=300
 Color=255 255 255
-HiglightColor=150 150 150
+HighlightColor=255 0 0
 Name=pizdnahoy
-Position=550 550
+Position=1200 550
+Size=600
 Button2End
 
 MenuEnd
