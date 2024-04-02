@@ -64,7 +64,7 @@ int main(int argc, char *argv[]){
                             buttons_drawn++;
                         }
                     }
-                    if (buttons_to_draw[1].is_selected == true){
+                    else if (buttons_to_draw[1].is_selected == true){
                         if(windows_drawn != 1){
                             windows_drawn--;
                         }
@@ -72,7 +72,7 @@ int main(int argc, char *argv[]){
                             buttons_drawn--;
                         } 
                     }
-                    if (buttons_to_draw[2].is_selected == true){
+                    else if (buttons_to_draw[2].is_selected == true){
                         break;
                     }
                     
@@ -92,3 +92,4 @@ int main(int argc, char *argv[]){
     system_close();
     return EXIT_SUCCESS;
 }
+
