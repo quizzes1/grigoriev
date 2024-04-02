@@ -24,6 +24,8 @@ int main(int argc, char *argv[]){
     SDL_RenderPresent(renderer);
     button buttons_to_draw[menu.buttons_counter+1];
     _window windows_to_draw[menu.windows_counter+1];
+    int windows_drawn = 1;
+    int buttons_drawn = 1;
 
     for(int i = 0; i < menu.buttons_counter; i++){
         buttons_to_draw[i] = initialize_button(WIDTH, menu.buttons[i].height, menu.buttons[i].width, menu.buttons[i].name, menu.buttons[i].color, menu.buttons[i].highlight_colour, menu.buttons[i].position, menu.buttons[i].size, renderer);
@@ -35,18 +37,18 @@ int main(int argc, char *argv[]){
 
 
     SDL_Event windowEvent;
-    int windows_drawn = 0;
+    
     while (1) {
         SDL_Rect mouse_point;
         mouse_point.h = 1;
         mouse_point.w = 1;
         SDL_GetMouseState(&mouse_point.x, &mouse_point.y);
-        for(int i = 0; i < menu.buttons_counter; i++){
-            buttons_to_draw[i] = update_button(renderer, buttons_to_draw[i], mouse_point);
-            draw_button(buttons_to_draw[i], renderer);
-        }
         for(int i = 0; i < windows_drawn; i++){
             draw_window(renderer, windows_to_draw[i]);
+        }
+        for(int i = 0; i < buttons_drawn; i++){
+            buttons_to_draw[i] = update_button(renderer, buttons_to_draw[i], mouse_point);
+            draw_button(buttons_to_draw[i], renderer);
         }
         if ( SDL_PollEvent ( &windowEvent ) ){
             if ( SDL_QUIT == windowEvent.type ){
@@ -58,11 +60,17 @@ int main(int argc, char *argv[]){
                         if(windows_drawn < menu.windows_counter){
                             windows_drawn++;
                         }
+                        if(buttons_drawn < menu.buttons_counter){
+                            buttons_drawn++;
+                        }
                     }
                     if (buttons_to_draw[1].is_selected == true){
-                        if(windows_drawn != 0){
+                        if(windows_drawn != 1){
                             windows_drawn--;
                         }
+                        if(buttons_drawn != 1){
+                            buttons_drawn--;
+                        } 
                     }
                     if (buttons_to_draw[2].is_selected == true){
                         break;

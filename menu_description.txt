@@ -1,17 +1,24 @@
 MenuBegin
 
 WindowBegin
-Width=100
-Height=50
+Width=300
+Height=200
 Color=148 0 211
 Position=100 105
 WindowEnd
 
 WindowBegin
-Width=100
-Height=50
+Width=300
+Height=200
 Color=0 255 0
-Position=300 205
+Position=400 105
+WindowEnd
+
+WindowBegin
+Width=300
+Height=200
+Color=0 0 255
+Position=700 105
 WindowEnd
 
 ButtonBegin
@@ -20,7 +27,7 @@ Height=100
 Color=255 255 255
 HighlightColor=255 0 0
 Name=draw
-Position=640 260
+Position=150 155
 Size=100
 ButtonEnd
 
@@ -30,7 +37,7 @@ Height=100
 Color=255 255 255
 HighlightColor=255 0 0
 Name=back
-Position=640 360
+Position=450 155
 Size=100
 ButtonEnd
 
@@ -40,7 +47,7 @@ Height=100
 Color=255 255 255
 HighlightColor=255 0 0
 Name=exIt
-Position=640 460
+Position=750 155
 Size=100
 ButtonEnd
 
