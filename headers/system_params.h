@@ -33,7 +33,7 @@ typedef struct button_qualities{
     point position;
     rgb_colour color;
     rgb_colour highlight_colour;
-
+    int button_number;
 } button_qualities;
 
 typedef struct window_qualities{
@@ -41,7 +41,7 @@ typedef struct window_qualities{
     int width;
     point position;
     rgb_colour color;
-
+    int window_number;
 } window_qualities;
 
 typedef struct Menu_qualities{

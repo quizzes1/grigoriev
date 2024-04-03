@@ -1,3 +1,5 @@
+#pragma once
+
 typedef struct button{
     TTF_Font* font;
     SDL_Texture* texture;

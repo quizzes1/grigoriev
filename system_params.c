@@ -118,6 +118,7 @@ void parse_line(char *line) {
             case WindowEnd:
                 menu.windows = (window_qualities*)realloc(menu.windows, sizeof(window_qualities) * menu.windows_counter);
                 menu.windows[menu.windows_counter - 1] = window_assigning;
+                menu.windows[menu.windows_counter-1].window_number = menu.windows_counter-1; 
                 parse_part_selected = 0;
                 break;
             case ButtonBegin:
@@ -127,6 +128,7 @@ void parse_line(char *line) {
             case ButtonEnd:
                 menu.buttons = (button_qualities*)realloc(menu.buttons, sizeof(button_qualities) * menu.buttons_counter);
                 menu.buttons[menu.buttons_counter - 1] = button_assigning;
+                menu.buttons[menu.buttons_counter - 1].button_number = menu.buttons_counter-1;
                 parse_part_selected = 0;
                 break;
             case Color:

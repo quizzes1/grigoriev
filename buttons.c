@@ -25,8 +25,8 @@ button initialize_button(int window_width, int height, int width, char *name, rg
     initializing_button.drect.h = height;
     initializing_button.drect.w = width;
 
-    initializing_button.drect.x = position.coordinates_x;
-    initializing_button.drect.y = position.coordinates_y;
+    initializing_button.drect.x = position.coordinates_x+width/4;
+    initializing_button.drect.y = position.coordinates_y+height/2;
     
     initializing_button.is_selected = false;
 

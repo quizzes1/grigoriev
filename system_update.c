@@ -28,7 +28,7 @@ int main(int argc, char *argv[]){
     int buttons_drawn = 1;
 
     for(int i = 0; i < menu.buttons_counter; i++){
-        buttons_to_draw[i] = initialize_button(WIDTH, menu.buttons[i].height, menu.buttons[i].width, menu.buttons[i].name, menu.buttons[i].color, menu.buttons[i].highlight_colour, menu.buttons[i].position, menu.buttons[i].size, renderer);
+        buttons_to_draw[i] = initialize_button(WIDTH, menu.buttons[i].height, menu.buttons[i].width, menu.buttons[i].name, menu.buttons[i].color, menu.buttons[i].highlight_colour, menu.windows[i].position, menu.buttons[i].size, renderer);
     }
 
     for(int i = 0; i < menu.windows_counter; i++){

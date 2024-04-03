@@ -4,7 +4,7 @@ WindowBegin
 Width=300
 Height=200
 Color=148 0 211
-Position=100 105
+Position=100 405
 WindowEnd
 
 WindowBegin
@@ -27,7 +27,6 @@ Height=100
 Color=255 255 255
 HighlightColor=255 0 0
 Name=draw
-Position=150 155
 Size=100
 ButtonEnd
 
@@ -37,7 +36,6 @@ Height=100
 Color=255 255 255
 HighlightColor=255 0 0
 Name=back
-Position=450 155
 Size=100
 ButtonEnd
 
@@ -47,7 +45,6 @@ Height=100
 Color=255 255 255
 HighlightColor=255 0 0
 Name=exIt
-Position=750 155
 Size=100
 ButtonEnd
 
